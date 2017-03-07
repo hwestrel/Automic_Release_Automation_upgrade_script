@@ -17,10 +17,10 @@ The script does following:
 - Update existing Action Packs, if needed
 
 PreReq:
-- an "working" Automic ARA installation and AE/ARA databases exist on one Windows machine
+- a "working" Automic ARA installation and AE/ARA databases exist on one Windows machine
 - a valid license file
 - a MSSQL server on "localhost"
-- one common dbowner user for both AE and ARA databases 
+- a common dbowner sql user for both AE and ARA databases 
 
 ToDo:
 - Download the solution and unzip on the ARA sandbox server 
@@ -29,11 +29,11 @@ ToDo:
 - Download new ARA binaries (from downloads.automic.com) and unzip 
 
 Usage:
-Start a windows shell as Adminstrator and run the upgrade script
+- Start a windows shell as Adminstrator and run the upgrade script
 c:\Upgrade_Automic\Upgrade_ARA.cmd  [Automic Source unzipped folder]
 
 Example
-Upgrade_ARA.cmd c:\temp\Automic.Release.Automation_12.1.0_2017-03-07
+- Upgrade_ARA.cmd c:\temp\Automic.Release.Automation_12.1.0_2017-03-07
 
 
 
