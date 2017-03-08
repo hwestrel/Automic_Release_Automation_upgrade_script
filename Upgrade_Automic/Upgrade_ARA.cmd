@@ -2,7 +2,8 @@
 ::-------------------------------------------------------------
 :: Automic Release Automation Upgrade Script
 :: Henrik Westrell 2017
-:: https://github.com/hwestrel/Automic_installer for more information
+:: Visit https://github.com/hwestrel/Automic_Release_Automation_upgrade_script 
+:: for more information and updates
 ::-------------------------------------------------------------
 
 ::-------------------------------------------------------------
