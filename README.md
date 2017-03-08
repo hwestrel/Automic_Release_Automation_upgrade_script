@@ -9,6 +9,7 @@ The script does following:
 - Rename existing AE and ARA MSSQL databases
 - Creates temp AE and ARA databases
 - Install new AE, ARA, Analytics and Agent binaries, One installer Unattended mode (1)
+- Copies old config file and compares with the new. (No auto merge!)
 - Drops temp databases
 - Restore AE and ARA database names
 - Run DBLOAD, upgrade AE database
@@ -16,17 +17,19 @@ The script does following:
 - Update existing Action Packs, if needed
 
 PreReq:
-- a "working" Automic ARA installation and AE/ARA databases exist on one Windows machine
+- a "working" Automic ARA installation and AE/ARA databases exist on one single Windows machine
 - a valid license file
 - a MSSQL server on "localhost"
 - a common db_owner sql user for both AE and ARA databases
 - make sure the sql user has a non-automic db as default db (ex "master")
-- make sure the sql user has enough privileges to rename, drop, set single user mode etc. (i.e ServerRole=sysadmin) 
+- make sure the sql user has enough privileges to rename, drop, set single user mode etc. (i.e ServerRole=sysadmin)
+- Powershell enabled
+
 
 ToDo:
 - Download the solution and unzip on the ARA sandbox server 
 - Replace license.txt with a valid Automic license
-- Upgrade_ARA.cmd: Update the environment specific variables
+- Upgrade_ARA.cmd: Update ALL the environment specific variables
 - Download new ARA binaries (from downloads.automic.com) and unzip 
 
 Usage:
