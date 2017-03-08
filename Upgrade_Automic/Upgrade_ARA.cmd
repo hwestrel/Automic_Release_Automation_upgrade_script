@@ -93,15 +93,6 @@ If ERRORLEVEL 1 (
 	echo Make sure all Automic related processes are killed and try again
 	exit /B 1
 )
-REM if EXIST "%MSSQLBakFolder%\AE.bak" (
-	REM echo Rename "%MSSQLBakFolder%\AE.bak"
-	REM rename "%MSSQLBakFolder%\AE.bak" AE.bak_old
-REM )
-
-REM if EXIST "%MSSQLBakFolder%\ARA.bak" (
-	REM echo Rename "%MSSQLBakFolder%\ARA.bak"
-	REM rename "%MSSQLBakFolder%\ARA.bak" ARA.bak_old
-REM )
 
 set TIMEF=%TIME::=_%
 set TIMEF=%TIMEF:,=_%
@@ -226,8 +217,10 @@ copy ucybdbun.ini	%DestFolder%%Utility_bin%\ucybdbun.ini_bak
 copy ucybdbcc.ini	%DestFolder%%Utility_bin%\ucybdbcc.ini_bak
 fc /A /C /W %DestFolder%%Utility_bin%\ucybdbld.ini	%DestFolder%%Utility_bin%\ucybdbld.ini_bak
 If ERRORLEVEL 1 ( 
+	echo -------------------------------------------------------------
 	echo -- File differs %DestFolder%%Utility_bin%\ucybdbld.inni %DestFolder%%Utility_bin%\ucybdbld.ini_bak
 	echo -- Ignore, update existing or replace with old
+	echo -------------------------------------------------------------
 	pause
 )
 
@@ -238,8 +231,10 @@ copy uc4.smc 		%DestFolder%%SM_bin%\uc4.smc_bak
 copy UC4.smd 		%DestFolder%%SM_bin%\UC4.smd_bak
 fc /A /W /C	%DestFolder%%SM_bin%\UC4.smd 	%DestFolder%%SM_bin%\UC4.smd_bak
 If ERRORLEVEL 1 ( 
+	echo -------------------------------------------------------------
 	echo -- File differs %DestFolder%%SM_bin%\UC4.smd 	%DestFolder%%SM_bin%\UC4.smd_bak
 	echo -- UC4.smd and UC4.smc Ignore, update existing or replace with old
+	echo -------------------------------------------------------------
 	pause
 )
 
@@ -279,8 +274,10 @@ cd %BakFolder%%AE_bin%
 copy ucsrv.ini 	%DestFolder%%AE_bin%\ucsrv.ini_bak
 fc /A /W /C %DestFolder%%AE_bin%\ucsrv.ini %DestFolder%%AE_bin%\ucsrv.ini_bak
 If ERRORLEVEL 1 ( 
+	echo -------------------------------------------------------------
 	echo -- File differs %DestFolder%%AE_bin%\ucsrv.ini %DestFolder%%AE_bin%\ucsrv.ini_bak
 	echo -- Ignore, update existing or replace with old
+	echo -------------------------------------------------------------
 	pause
 )
 echo -------------------------------------------------------------
@@ -293,8 +290,10 @@ copy uc4config.xml 				%DestFolder%%ApacheFolder%\webapps\awi\config\uc4config.x
 copy configuration.properties	%DestFolder%%ApacheFolder%\webapps\awi\config\configuration.properties_bak
 fc /A /W /C %DestFolder%%ApacheFolder%\webapps\awi\config\uc4config.xml %DestFolder%%ApacheFolder%\webapps\awi\config\uc4config.xml_bak
 If ERRORLEVEL 1 ( 
+	echo -------------------------------------------------------------
 	echo -- File differs %DestFolder%%ApacheFolder%\webapps\awi\config\uc4config.xml %DestFolder%%ApacheFolder%\webapps\awi\config\uc4config.xml_bak
 	echo -- Ignore, update existing or replace with old
+	echo -------------------------------------------------------------
 	pause
 )
 
@@ -318,8 +317,10 @@ copy web.config 				%DestFolder%%ARAFolder%\WebUI\web.config_bak
 fc /A /W /C %DestFolder%%ARAFolder%\WebUI\customer.config %DestFolder%%ARAFolder%\WebUI\customer.config_bak
 rem fc %DestFolder%%ARAFolder%\WebUI\web.config 	%DestFolder%%ARAFolder%\WebUI\web.config_bak
 If ERRORLEVEL 1 ( 
+	echo -------------------------------------------------------------
 	echo -- File differs %DestFolder%%ARAFolder%\WebUI\customer.config %DestFolder%%ARAFolder%\WebUI\customer.config_bak
 	echo -- Ignore, update existing or replace with old
+	echo -------------------------------------------------------------
 	pause
 )
 
@@ -380,9 +381,5 @@ echo - Done
 echo - Clear your browser cache 
 echo -------------------------------------------------------------
 exit /B 0
-
-
-
-
 
 
