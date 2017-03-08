@@ -326,7 +326,7 @@ pause
 :: login_dat.xml, pmconfig.xml, uc4config.xml
 cd %APMBinFolder%
 call apm update -y
-call apm upgrade -y -client %AEClient% -u %AEUserDep% -pw %AEPwd%
+call apm upgrade -y -c %AEClient% -u %AEUserDep% -pw %AEPwd%
 
 cd %ScriptFolder%
 
