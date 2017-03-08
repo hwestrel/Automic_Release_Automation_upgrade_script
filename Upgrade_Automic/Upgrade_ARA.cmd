@@ -26,7 +26,7 @@ Set AEPwd=ara
 
 
 :: MSSQL variables
-Set DBUpgradeVersion=12.1
+Set DBUpgradeVersion=12.0
 Set MSSQLBakFolder=C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Backup
 Set SQLUser=automic
 Set SQLPwd=Password1
