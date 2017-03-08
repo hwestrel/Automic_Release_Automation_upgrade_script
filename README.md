@@ -10,6 +10,7 @@ The script does following:
 - Creates temp AE and ARA databases
 - Install new AE, ARA, Analytics and Agent binaries, One installer Unattended mode (1)
 - Drops temp databases
+- Restore AE and ARA database names
 - Run DBLOAD, upgrade AE database
 - Run ARA DataMigrator, upgrade ARA database
 - Update existing Action Packs, if needed
