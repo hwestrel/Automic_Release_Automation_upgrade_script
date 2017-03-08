@@ -119,7 +119,15 @@ echo -------------------------------------------------------------
 pause
 
 call sqlcmd -S localhost -U %SQLUser% -P %SQLPwd% -v dbName=%ARAdb% -i %ScriptFolder%Rename_db.sql
+If ERRORLEVEL 1 (
+	echo Error renaming database %ARAdb%
+	exit /B 1
+)
 call sqlcmd -S localhost -U %SQLUser% -P %SQLPwd% -v dbName=%AEdb%  -i %ScriptFolder%Rename_db.sql
+If ERRORLEVEL 1 (
+	echo Error renaming database %AEdb%
+	exit /B 1
+)
 
 echo -------------------------------------------------------------
 echo -  Copy JDBC driver and license file to %DestFolder%
