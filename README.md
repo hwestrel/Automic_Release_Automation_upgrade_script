@@ -44,13 +44,13 @@ Note (1) The One Installer installs following components:
 - ServiceManager dialog
 - Tomcat
 - Automic Web Interface, ARA Plugin for AWI
- - ARA
- - Analytics (backend and Postgresql)
- - Utilities
- - Oracle Java
- - Package Manager
- - Windows Agent
- - RA Web Service REST, RA Web Service SOAP, FTP Agents
+- ARA
+- Analytics (backend and Postgresql)
+- Utilities
+- Oracle Java
+- Package Manager
+- Windows Agent
+- RA Web Service REST, RA Web Service SOAP, FTP Agents
 
 
 
