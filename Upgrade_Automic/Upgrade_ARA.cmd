@@ -90,6 +90,7 @@ cd %ScriptFolder%
 move /Y %DestFolder% %BakFolder%
 If ERRORLEVEL 1 (
 	echo Error renaming %DestFolder% to %BakFolder%
+	echo Make sure all Automic related processes are killed and try again
 	exit /B 1
 )
 REM if EXIST "%MSSQLBakFolder%\AE.bak" (
