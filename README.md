@@ -18,7 +18,9 @@ PreReq:
 - a "working" Automic ARA installation and AE/ARA databases exist on one Windows machine
 - a valid license file
 - a MSSQL server on "localhost"
-- a common dbowner sql user for both AE and ARA databases 
+- a common db_owner sql user for both AE and ARA databases
+- make sure the sql user has a non-automic db as default db (ex "master")
+- make sure the sql user has enough privileges to rename, drop, set single user mode etc. (i.e ServerRole=sysadmin) 
 
 ToDo:
 - Download the solution and unzip on the ARA sandbox server 
