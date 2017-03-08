@@ -1,6 +1,4 @@
-# Automic_ARA_installer
-
-Automic Release Automation - Upgrade Script
+# Automic Release Automation - Upgrade Script
 
 The main purpose for this script is to automate the upgrade procedure for ARA sandbox installations.
 Not suitable for Production use. Only for sandbox/non-prod installations.
