@@ -8,7 +8,7 @@ The script does following:
 - Backup existing Automic folder and AE and ARA MSSQL databases
 - Rename existing AE and ARA MSSQL databases
 - Creates temp AE and ARA databases
-- Install new AE, ARA, Analytics and Agent binaries, using One installer Unattended mode
+- Install new AE, ARA, Analytics and Agent binaries, One installer Unattended mode (1)
 - Drops temp databases
 - Run DBLOAD, upgrade AE database
 - Run ARA DataMigrator, upgrade ARA database
@@ -35,6 +35,22 @@ c:\Upgrade_Automic\Upgrade_ARA.cmd  [Automic Source unzipped folder]
 Example
 - Upgrade_ARA.cmd c:\temp\Automic.Release.Automation_12.1.0_2017-03-07
 
+Known Issues
+- The Analytics datastore is replaced. The One Installer creates a new datastore.
+
+Note (1) The One Installer installs following components:
+- Automation Engine (5xWP/2xCP/1xJWP)
+- ServiceManager 
+- ServiceManager dialog
+- Tomcat
+- Automic Web Interface, ARA Plugin for AWI
+ - ARA
+ - Analytics (backend and Postgresql)
+ - Utilities
+ - Oracle Java
+ - Package Manager
+ - Windows Agent
+ - RA Web Service REST, RA Web Service SOAP, FTP Agents
 
 
 
