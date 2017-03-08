@@ -167,6 +167,11 @@ pause
 
 call sqlcmd -S localhost -U %SQLUser% -P %SQLPwd%  -v dbName=%AEdb% -i %ScriptFolder%create_db.sql
 call sqlcmd -S localhost -U %SQLUser% -P %SQLPwd%  -v dbName=%ARAdb% -i %ScriptFolder%create_db.sql
+If ERRORLEVEL 1 (
+	echo -- Error Creating temp databases above
+	echo -- Create databases manually or terminate the script
+	pause
+)
 
 echo -------------------------------------------------------------
 echo -  Install new binaries, using One installer Unattended mode
@@ -199,9 +204,14 @@ echo -  Restore database names
 echo -------------------------------------------------------------
 call sqlcmd -S localhost -U %SQLUser% -P %SQLPwd%  -v dbName=%AEdb% -i %ScriptFolder%restore_name_db.sql
 call sqlcmd -S localhost -U %SQLUser% -P %SQLPwd%  -v dbName=%ARAdb% -i %ScriptFolder%restore_name_db.sql
-
+If ERRORLEVEL 1 (
+	echo -- Error Restoring database names 
+	echo -- Rename databases manually or terminate the script
+	pause
+)
 echo -------------------------------------------------------------
 echo -  Copy and Compare old AE config files
+echo -  Edit or replace new config files that differs
 echo -------------------------------------------------------------
 pause
 
@@ -214,15 +224,24 @@ copy ucybdbrr.ini	%DestFolder%%Utility_bin%\ucybdbrr.ini_bak
 copy ucybdbrt.ini	%DestFolder%%Utility_bin%\ucybdbrt.ini_bak
 copy ucybdbun.ini	%DestFolder%%Utility_bin%\ucybdbun.ini_bak
 copy ucybdbcc.ini	%DestFolder%%Utility_bin%\ucybdbcc.ini_bak
-fc 	%DestFolder%%Utility_bin%\ucybdbld.ini	%DestFolder%%Utility_bin%\ucybdbld.ini_bak
-
+fc /A /C /W %DestFolder%%Utility_bin%\ucybdbld.ini	%DestFolder%%Utility_bin%\ucybdbld.ini_bak
+If ERRORLEVEL 1 ( 
+	echo -- File differs %DestFolder%%Utility_bin%\ucybdbld.inni %DestFolder%%Utility_bin%\ucybdbld.ini_bak
+	echo -- Ignore, update existing or replace with old
+	pause
+)
 
 Set SM_bin=\Automation.Platform\ServiceManager\bin
 cd %BakFolder%%SM_bin%
 copy ucybsmgr.ini 	%DestFolder%%SM_bin%\ucybsmgr.ini_bak
 copy uc4.smc 		%DestFolder%%SM_bin%\uc4.smc_bak
 copy UC4.smd 		%DestFolder%%SM_bin%\UC4.smd_bak
-fc	%DestFolder%%SM_bin%\UC4.smd 	%DestFolder%%SM_bin%\UC4.smd_bak
+fc /A /W /C	%DestFolder%%SM_bin%\UC4.smd 	%DestFolder%%SM_bin%\UC4.smd_bak
+If ERRORLEVEL 1 ( 
+	echo -- File differs %DestFolder%%SM_bin%\UC4.smd 	%DestFolder%%SM_bin%\UC4.smd_bak
+	echo -- UC4.smd and UC4.smc Ignore, update existing or replace with old
+	pause
+)
 
 Set SMD_bin=\Automation.Platform\ServiceManagerDialog\bin
 cd %BakFolder%%SMD_bin%
@@ -258,8 +277,12 @@ IF EXIST %BakFolder%%WIN-agent_bin% (
 set AE_bin=\Automation.Platform\AutomationEngine\bin
 cd %BakFolder%%AE_bin%
 copy ucsrv.ini 	%DestFolder%%AE_bin%\ucsrv.ini_bak
-rem fc 	%DestFolder%%AE_bin%\ucsrv.ini 		%DestFolder%%AE_bin%\ucsrv.ini_bak
-
+fc /A /W /C %DestFolder%%AE_bin%\ucsrv.ini %DestFolder%%AE_bin%\ucsrv.ini_bak
+If ERRORLEVEL 1 ( 
+	echo -- File differs %DestFolder%%AE_bin%\ucsrv.ini %DestFolder%%AE_bin%\ucsrv.ini_bak
+	echo -- Ignore, update existing or replace with old
+	pause
+)
 echo -------------------------------------------------------------
 echo -  Copy AWI config files
 echo -------------------------------------------------------------
@@ -268,7 +291,12 @@ pause
 cd %BakFolder%%ApacheFolder%\webapps\awi\config
 copy uc4config.xml 				%DestFolder%%ApacheFolder%\webapps\awi\config\uc4config.xml_bak
 copy configuration.properties	%DestFolder%%ApacheFolder%\webapps\awi\config\configuration.properties_bak
-fc %DestFolder%%ApacheFolder%\webapps\awi\config\uc4config.xml %DestFolder%%ApacheFolder%\webapps\awi\config\uc4config.xml_bak
+fc /A /W /C %DestFolder%%ApacheFolder%\webapps\awi\config\uc4config.xml %DestFolder%%ApacheFolder%\webapps\awi\config\uc4config.xml_bak
+If ERRORLEVEL 1 ( 
+	echo -- File differs %DestFolder%%ApacheFolder%\webapps\awi\config\uc4config.xml %DestFolder%%ApacheFolder%\webapps\awi\config\uc4config.xml_bak
+	echo -- Ignore, update existing or replace with old
+	pause
+)
 
 cd %BakFolder%%ApacheFolder%\webapps\awi\config\webui-plugin-bond
 copy connection.properties 		%DestFolder%%ApacheFolder%\webapps\awi\config\webui-plugin-bond\connection.properties_bak
@@ -287,15 +315,20 @@ pause
 cd %BakFolder%%ARAFolder%\WebUI
 copy customer.config 			%DestFolder%%ARAFolder%\WebUI\customer.config_bak
 copy web.config 				%DestFolder%%ARAFolder%\WebUI\web.config_bak
-fc %DestFolder%%ARAFolder%\WebUI\customer.config %DestFolder%%ARAFolder%\WebUI\customer.config_bak
-fc %DestFolder%%ARAFolder%\WebUI\web.config 	%DestFolder%%ARAFolder%\WebUI\web.config_bak
+fc /A /W /C %DestFolder%%ARAFolder%\WebUI\customer.config %DestFolder%%ARAFolder%\WebUI\customer.config_bak
+rem fc %DestFolder%%ARAFolder%\WebUI\web.config 	%DestFolder%%ARAFolder%\WebUI\web.config_bak
+If ERRORLEVEL 1 ( 
+	echo -- File differs %DestFolder%%ARAFolder%\WebUI\customer.config %DestFolder%%ARAFolder%\WebUI\customer.config_bak
+	echo -- Ignore, update existing or replace with old
+	pause
+)
 
 cd %BakFolder%%ARAFolder%\WebUI\config
 copy integration.config 			%DestFolder%%ARAFolder%\WebUI\integration.config_bak
 
 cd %BakFolder%%ARAFolder%\Utilities\DataMigrator
 copy DataMigrator.exe.config 	%DestFolder%%ARAFolder%\Utilities\DataMigrator\DataMigrator.exe.config_bak
-fc %DestFolder%%ARAFolder%\Utilities\DataMigrator\DataMigrator.exe.config 	%DestFolder%%ARAFolder%\Utilities\DataMigrator\DataMigrator.exe.config_bak
+rem fc %DestFolder%%ARAFolder%\Utilities\DataMigrator\DataMigrator.exe.config 	%DestFolder%%ARAFolder%\Utilities\DataMigrator\DataMigrator.exe.config_bak
 
 cd %BakFolder%%ARAFolder%\Utilities\DBCleanup
 copy  DB-Cleanup.exe.config 	%DestFolder%%ARAFolder%\Utilities\DBCleanup\DB-Cleanup.exe.config_bak
@@ -303,6 +336,7 @@ copy  DB-Cleanup.exe.config 	%DestFolder%%ARAFolder%\Utilities\DBCleanup\DB-Clea
 echo.
 echo -------------------------------------------------------------
 echo - config files OK ? Press any key to continue dbload (upgrade db)
+echo - dbload script: ..\db\general\%DBUpgradeVersion%\UC_UPD.TXT
 echo -------------------------------------------------------------
 pause 
 
@@ -328,7 +362,8 @@ sc start UC4.ServiceManager.Automic
 sc start W3SVC
 
 echo -------------------------------------------------------------
-echo -   Update Action Packs....
+echo -  Update Action Packs....
+echo -  Please provide downloads.automic.com user/passwd when prompted.
 echo -------------------------------------------------------------
 pause
 :: C:\Automic\Tools\Package.Manager\conf\login_dat.xml
