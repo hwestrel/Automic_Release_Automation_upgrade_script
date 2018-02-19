@@ -6,7 +6,7 @@
 :: for more information and updates
 ::-------------------------------------------------------------
 echo.
-echo  ARAARAARAR   ARAARAARA     ARAARAARAR 
+echo   ARARARAR    ARARRAARA      ARARARAR 
 echo ARA      ARA  ARA    ARA   ARA      ARA
 echo ARAARAARAARA  ARAARAARA    ARAARAARAARA
 echo ARA      ARA  ARA    ARA   ARA      ARA
