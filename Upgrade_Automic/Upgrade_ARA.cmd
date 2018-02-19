@@ -5,7 +5,16 @@
 :: Visit https://github.com/hwestrel/Automic_Release_Automation_upgrade_script 
 :: for more information and updates
 ::-------------------------------------------------------------
-
+echo.
+echo  ARAARAARAR   ARAARAARA     ARAARAARAR 
+echo ARA      ARA  ARA    ARA   ARA      ARA
+echo ARAARAARAARA  ARAARAARA    ARAARAARAARA
+echo ARA      ARA  ARA    ARA   ARA      ARA
+echo ARA      ARA  ARA     ARA  ARA      ARA
+echo -----------------------------------------
+echo      U P G R A D E - S C R I P T
+echo -----------------------------------------
+echo.
 ::-------------------------------------------------------------
 :: Env. specific Variables 
 ::-------------------------------------------------------------
